@@ -13,7 +13,6 @@ jobs:
           ls ${{ github.workspace }}
       - run: echo "This job's status is ${{ job.status }}."
       - run: zip -r mycoolapp_v1 mycoolapp
-
       - name: Create GitHub Release
       - uses: actions/create-release@v1
         env:
