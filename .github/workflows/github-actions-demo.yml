@@ -1,9 +1,9 @@
 name: GitHub Actions Demo
 run-name: ${{ github.actor }} is testing out GitHub Actions
-on: [push]
-#   push:
-#     tags:
-#       - '*'
+on: 
+  push:
+    tags:
+      - '*'
 
 jobs:
   Explore-GitHub-Actions:
@@ -24,11 +24,13 @@ jobs:
         run: |
           ls ${{ github.workspace }}
 
-    #   - name: Create GitHub Release
-    #     uses: actions/create-release@v1
-    #     env:
-    #       GITHUB_TOKEN: ${{  secrets.GITHUB_TOKEN  }}
-    #     with:
-    #       tag_name: Releases
-    #       release_number: Release ${{  github.run_number  }}
+      - name: Upload more zips
+        uses: svenstaro/upload-release-action@v2
+        with:
+            repo_token: ${{ secrets.GITHUB_TOKEN }}
+            file: mycoolapp_main
+            tag: ${{ github.ref }}
+            overwrite: true
+            body: "Uploading more zips"
+          
 
