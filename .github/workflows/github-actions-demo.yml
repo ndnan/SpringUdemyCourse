@@ -1,5 +1,5 @@
 name: GitHub Actions Demo
-run-name: ${{ github.actor }} is testing out GitHub Actions 
+run-name: ${{ github.actor }} is testing out GitHub Actions
 on: [push]
 jobs:
   Explore-GitHub-Actions:
@@ -13,12 +13,12 @@ jobs:
           ls ${{ github.workspace }}
       - run: echo "This job's status is ${{ job.status }}."
       - run: zip -r mycoolapp_v1 mycoolapp
-      
+
       - name: Create GitHub Release
         uses: actions/create-release@v1
         env:
           GITHUB_TOKEN: ${{  secrets.GITHUB_TOKEN  }}
         with:
-          tag_name: ${{  github.run_number  }}
+          tag_name: Releases
           release_number: Release ${{  github.run_number  }}
 
